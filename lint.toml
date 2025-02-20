@@ -1,0 +1,79 @@
+[tool.black]
+line-length = 120
+color = true
+include = '\.pyi?$'
+exclude = '/(\.eggs|\.git|\.hg|\.mypy_cache|\.venv|\.direnv|build|dist)'
+
+[tool.isort]
+known_typing = ["typing", "types", "typing_extensions", "mypy", "mypy_extensions"]
+sections = ["FUTURE", "TYPING", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "MAIN", "LOCALFOLDER"]
+default_section = "FIRSTPARTY"
+profile = "black"
+line_length = 120
+src_paths = ["my_project_dags", "my_project", "tests"]
+known_main = ["my_project_dags", "my_project", "tests"]
+multi_line_output = 3
+indent = 4
+color_output = true
+include_trailing_comma = true
+
+[tool.autoflake]
+# return error code if changes are needed
+check = false
+# make changes to files instead of printing diffs
+in-place = true
+# drill down directories recursively
+recursive = true
+# exclude file/directory names that match these comma-separated globs
+exclude = ".venv,venv,migrations"
+# by default, only unused standard library imports are removed; specify a comma-separated list of additional
+# modules/packages
+#imports = "<IMPORTS>"
+# expand wildcard star imports with undefined names; this only triggers if there is only one star import in
+# the file; this is skipped if there are any uses of `__all__` or `del` in the file
+expand-star-imports = false
+# remove all unused imports (not just those from the standard library)
+remove-all-unused-imports = true
+# exclude __init__.py when removing unused imports
+ignore-init-module-imports = true
+# remove all duplicate keys in objects
+remove-duplicate-keys = true
+# remove unused variables
+remove-unused-variables = false
+
+[tool.flake8]
+max-complexity = 6
+statistics = true
+max-line-length = 120
+doctests = true
+ignore = ["B017","B902","D100", "D101", "D104", "D106", "D401","E203", "E731", "N818", "N999","W503", "W504", "Q003","P101","P103","SIM114","I100","I202","I004","I001","I005"]
+no-accept-encodings = true
+# Flake plugins:
+accept-encodings = "utf-8"
+
+[tool.mypy]
+pretty = true
+show_traceback = false
+color_output = true
+
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+
+allow_redefinition = false
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_untyped_calls = true
+disallow_untyped_decorators = true
+disallow_untyped_defs = true
+implicit_reexport = false
+no_implicit_optional = true
+show_column_numbers = true
+show_error_codes = true
+show_error_context = true
+strict_equality = true
+strict_optional = true
+warn_no_return = true
+warn_redundant_casts = true
+warn_unreachable = true
